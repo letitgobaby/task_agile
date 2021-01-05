@@ -1,4 +1,4 @@
-From openjdk:8-jre-alpine
+FROM openjdk:8-jre-alpine
 
 RUN apk add graphicsmagick=1.3.30-r0
 RUN ln -s /usr/bin/gm /usr/local/bin/gm

@@ -243,6 +243,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>${codehaus.version}</version>
         <executions>
+
           <execution>
             <id>font-end install</id>
             <goals>
@@ -250,12 +251,13 @@
             </goals>
             <phase>prepare-package</phase>
             <configuration>
-              <executable>npm</executable>
+              <executable>yarn</executable>
               <arguments>
                 <argument>install</argument>
               </arguments>
             </configuration>
           </execution>
+          <!--
           <execution>
             <id>font-end unit test</id>
             <goals>
@@ -270,6 +272,7 @@
               </arguments>
             </configuration>
           </execution>
+          -->
           <execution>
             <id>font-end build package</id>
             <goals>
@@ -277,11 +280,17 @@
             </goals>
             <phase>prepare-package</phase>
             <configuration>
-              <executable>npm</executable>
+            <executable>yarn</executable>
+              <arguments>
+                <argument>build</argument>
+              </arguments>
+            <!--
+            <executable>npm</executable>
               <arguments>
                 <argument>run</argument>
                 <argument>build</argument>
               </arguments>
+            -->
             </configuration>
           </execution>
         </executions>
