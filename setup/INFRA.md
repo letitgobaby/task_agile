@@ -1,9 +1,11 @@
 ### mysql 실행
-docker pull mysql
+sudo docker pull mysql
 
-docker run -d --name mysql -p 3306:3306  \
+sudo docker run -d --name mysql -p 3306:3306  \
 -e MYSQL_ROOT_PASSWORD=password \
 mysql:5.7
+
+sudo docker exec -it XXXX /bin/bash
 
 mysql -u root -p
 password
@@ -18,7 +20,7 @@ GRANT ALL PRIVILEGES ON task_agile.* TO 'app_user'@'%';
 ---
 ### rabbitmq 실행
 
-docker pull rabbitmq
+sudo docker pull rabbitmq
 
 sudo docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 \
 --restart=unless-stopped \
