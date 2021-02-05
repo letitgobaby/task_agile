@@ -265,7 +265,7 @@
             </goals>
             <phase>prepare-package</phase>
             <configuration>
-              <executable>yarn</executable>
+              <executable>npm</executable>
               <arguments>
                 <argument>install</argument>
               </arguments>
@@ -294,7 +294,7 @@
             </goals>
             <phase>prepare-package</phase>
             <configuration>
-            <executable>yarn</executable>
+            <executable>npm</executable>
               <arguments>
                 <argument>build</argument>
               </arguments>
