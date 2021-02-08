@@ -12,7 +12,7 @@ ALTER TABLE `task_agile`.`card` ADD CONSTRAINT `fk_card_board_board_id`
   ON UPDATE NO ACTION;
 
 -- Change board_id to be nullable
-ALTER TABLE `task_agile`.`activity` CHANGE COLUMN `board_id` `board_id` INT(11) NULL  COMMENT '' AFTER `card_id`;
+ALTER TABLE `task_agile`.`f` CHANGE COLUMN `board_id` `board_id` INT(11) NULL  COMMENT '' AFTER `card_id`;
 -- Change type to support integer value other than 0, 1
 ALTER TABLE `task_agile`.`activity` CHANGE COLUMN `type` `type` INT(11) NOT NULL COMMENT '' AFTER `board_id`;
 -- Add `ip_address` to activity table

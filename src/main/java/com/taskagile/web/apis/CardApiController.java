@@ -25,17 +25,14 @@ public class CardApiController extends AbstractBaseController {
   private CardUpdater cardUpdater;
   private FileUrlCreator fileUrlCreator;
 
-  public CardApiController(CardService cardService,
-                           CardUpdater cardUpdater,
-                           FileUrlCreator fileUrlCreator) {
+  public CardApiController(CardService cardService, CardUpdater cardUpdater, FileUrlCreator fileUrlCreator) {
     this.cardService = cardService;
     this.cardUpdater = cardUpdater;
     this.fileUrlCreator = fileUrlCreator;
   }
 
   @PostMapping("/api/cards")
-  public ResponseEntity<ApiResult> addCard(@RequestBody AddCardPayload payload,
-                                           HttpServletRequest request) {
+  public ResponseEntity<ApiResult> addCard(@RequestBody AddCardPayload payload, HttpServletRequest request) {
     AddCardCommand command = payload.toCommand();
     addTriggeredBy(command, request);
 
@@ -52,7 +49,7 @@ public class CardApiController extends AbstractBaseController {
 
   @PostMapping("/api/cards/positions")
   public ResponseEntity<ApiResult> changeCardPositions(@RequestBody ChangeCardPositionsPayload payload,
-                                                       HttpServletRequest request) {
+      HttpServletRequest request) {
     ChangeCardPositionsCommand command = payload.toCommand();
     addTriggeredBy(command, request);
 
@@ -61,9 +58,8 @@ public class CardApiController extends AbstractBaseController {
   }
 
   @PutMapping("/api/cards/{cardId}/title")
-  public ResponseEntity<ApiResult> changeTitle(@PathVariable long cardId,
-                                               @RequestBody ChangeCardTitlePayload payload,
-                                               HttpServletRequest request) {
+  public ResponseEntity<ApiResult> changeTitle(@PathVariable long cardId, @RequestBody ChangeCardTitlePayload payload,
+      HttpServletRequest request) {
     ChangeCardTitleCommand command = payload.toCommand(cardId);
     addTriggeredBy(command, request);
 
@@ -73,8 +69,7 @@ public class CardApiController extends AbstractBaseController {
 
   @PutMapping("/api/cards/{cardId}/description")
   public ResponseEntity<ApiResult> changeDescription(@PathVariable long cardId,
-                                                     @RequestBody ChangeCardDescriptionPayload payload,
-                                                     HttpServletRequest request) {
+      @RequestBody ChangeCardDescriptionPayload payload, HttpServletRequest request) {
     ChangeCardDescriptionCommand command = payload.toCommand(cardId);
     addTriggeredBy(command, request);
 
@@ -83,9 +78,8 @@ public class CardApiController extends AbstractBaseController {
   }
 
   @PostMapping("/api/cards/{cardId}/comments")
-  public ResponseEntity<ApiResult> addCardComment(@PathVariable long cardId,
-                                                  @RequestBody AddCardCommentPayload payload,
-                                                  HttpServletRequest request) {
+  public ResponseEntity<ApiResult> addCardComment(@PathVariable long cardId, @RequestBody AddCardCommentPayload payload,
+      HttpServletRequest request) {
     AddCardCommentCommand command = payload.toCommand(new CardId(cardId));
     addTriggeredBy(command, request);
 
@@ -100,9 +94,9 @@ public class CardApiController extends AbstractBaseController {
   }
 
   @PostMapping("/api/cards/{cardId}/attachments")
-  public ResponseEntity<ApiResult> addAttachment(@PathVariable long cardId,
-                                                 @RequestParam("file") MultipartFile file,
-                                                 HttpServletRequest request) {
+  public ResponseEntity<ApiResult> addAttachment(@PathVariable long cardId, 
+                                                @RequestParam("file") MultipartFile file,
+                                                HttpServletRequest request) {
     AddCardAttachmentCommand command = new AddCardAttachmentCommand(cardId, file);
     addTriggeredBy(command, request);
 

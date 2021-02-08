@@ -85,6 +85,7 @@ public class BoardApiController extends AbstractBaseController {
   public ResponseEntity<ApiResult> addMember(@PathVariable("boardId") long rawBoardId,
                                              @RequestBody AddBoardMemberPayload payload,
                                              HttpServletRequest request) {
+                                               
     BoardId boardId = new BoardId(rawBoardId);
     Board board = boardService.findById(boardId);
     if (board == null) {

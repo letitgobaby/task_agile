@@ -10,6 +10,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema task_agile
 -- -----------------------------------------------------
+CREATE DATABASE task_agile CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE USER 'letitgobaby'@'%' IDENTIFIED BY'letitgobaby';
+GRANT ALL PRIVILEGES ON task_agile.* TO 'letitgobaby'@'%';
 
 -- -----------------------------------------------------
 -- Schema task_agile

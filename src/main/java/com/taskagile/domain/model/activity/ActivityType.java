@@ -4,24 +4,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ActivityType {
+
   UNKNOWN(""),
+  
+  // Board
   ADD_BOARD("add-board"),
   RENAME_BOARD("rename-board"),
   ARCHIVE_BOARD("archive-board"),
+  
+  // Board Member
   ADD_BOARD_MEMBER("add-board-member"),
   REMOVE_BOARD_MEMBER("remove-board-member"),
+
+  // Card List
   ADD_CARD_LIST("add-card-list"),
   RENAME_CARD_LIST("rename-card-list"),
   ARCHIVE_CARD_LIST("archive-card-list"),
+  
+  // Card
   ADD_CARD("add-card"),
-  CHANGE_CARD_TITLE("change-card-title"),
-  CHANGE_CARD_DESCRIPTION("change-card-description"),
-  ASSIGN_MEMBER_TO_CARD("assign-member-to-card"),
-  REMOVE_MEMBER_FROM_CARD("remove-member-from-card"),
-  ADD_ATTACHMENT("add-attachment"),
-  REMOVE_ATTACHMENT("remove-attachment"),
   ARCHIVE_CARD("archive-card"),
   DELETE_CARD("delete-card"),
+  
+  // Card Contents
+  CHANGE_CARD_TITLE("change-card-title"),
+  CHANGE_CARD_DESCRIPTION("change-card-description"),
+  
+  // Member to Card
+  ASSIGN_MEMBER_TO_CARD("assign-member-to-card"),
+  REMOVE_MEMBER_FROM_CARD("remove-member-from-card"),
+
+  // Attachment
+  ADD_ATTACHMENT("add-attachment"),
+  REMOVE_ATTACHMENT("remove-attachment"),
+  
+  // Comment
   ADD_COMMENT("add-comment"),
   EDIT_COMMENT("edit-comment"),
   DELETE_COMMENT("delete-comment");
@@ -80,4 +97,5 @@ public enum ActivityType {
     TYPES.put(EDIT_COMMENT.type, EDIT_COMMENT);
     TYPES.put(DELETE_COMMENT.type, DELETE_COMMENT);
   }
+
 }

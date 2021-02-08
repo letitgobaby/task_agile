@@ -57,3 +57,13 @@ With active profiles `staging` and `docker`. Make sure `docker` is the last one 
 ```bash
 $ docker run --rm --name taskagile --env-file ./docker/env.list -e "SPRING_PROFILES_ACTIVE=staging,docker" -p 8080:8080 -p 9000:9000 taskagile
 ```
+
+
+
+### docker run
+
+```
+docker run -d --name rabbitmq_test -p 5672:5672 -p 9999:15672 --restart=unless-stopped -e RABBITMQ_DEFAULT_USER=username -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management
+
+docker run -d --name mysql_test -p 3306:3306 -p 33060:33060 -e MYSQL_ROOT_PASSWORD=jinwoo mysql
+```
