@@ -7,6 +7,7 @@ export default {
    * @param {Object} detail registration detail
    */
   register (detail) {
+    console.log("#####################################");
     return new Promise((resolve, reject) => {
       axios.post('/registrations', detail).then(({data}) => {
         resolve(data)

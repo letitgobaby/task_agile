@@ -126,6 +126,7 @@ export default {
   },
   methods: {
     submitForm () {
+      console.log("*****************************");
       this.$v.$touch()
       if (this.$v.$invalid) {
         return

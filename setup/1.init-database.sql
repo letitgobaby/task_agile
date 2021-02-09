@@ -27,7 +27,7 @@ USE `task_agile` ;
 DROP TABLE IF EXISTS `task_agile`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`user` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
   `email_address` VARCHAR(128) NOT NULL,
   `username` VARCHAR(64) NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
@@ -46,9 +46,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`team` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`team` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(128) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   `archived` TINYINT(1) NOT NULL DEFAULT 0,
   `created_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
@@ -67,11 +67,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`board` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`board` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(128) NOT NULL,
   `description` VARCHAR(256) NOT NULL,
-  `user_id` INT(11) NOT NULL,
-  `team_id` INT(11) NULL,
+  `user_id` BIGINT(11) NOT NULL,
+  `team_id` BIGINT(11) NULL,
   `archived` TINYINT(1) NOT NULL DEFAULT 0,
   `created_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
@@ -96,8 +96,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`board_member` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`board_member` (
-  `board_id` INT(11) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `board_id` BIGINT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   INDEX `fk_board_id_idx` (`board_id` ASC),
   INDEX `fk_user_id_idx` (`user_id` ASC),
   PRIMARY KEY (`user_id`, `board_id`),
@@ -120,11 +120,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`card_list` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`card_list` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `board_id` INT(11) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+  `board_id` BIGINT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   `name` VARCHAR(128) NOT NULL,
-  `position` INT(11) NOT NULL,
+  `position` BIGINT(11) NOT NULL,
   `archived` TINYINT(1) NOT NULL DEFAULT 0,
   `created_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
@@ -149,12 +149,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`card` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`card` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `card_list_id` INT(11) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+  `card_list_id` BIGINT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `description` TEXT NOT NULL,
-  `position` INT(11) NOT NULL,
+  `position` BIGINT(11) NOT NULL,
   `archived` TINYINT(1) NOT NULL,
   `created_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
@@ -179,8 +179,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`assignment` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`assignment` (
-  `card_id` INT(11) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `card_id` BIGINT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   PRIMARY KEY (`card_id`, `user_id`),
   INDEX `fk_user_id_idx` (`user_id` ASC),
   CONSTRAINT `fk_assignment_card_card_id`
@@ -202,12 +202,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`attachment` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`attachment` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `card_id` INT(11) NOT NULL,
-  `user_id` INT(11) NOT NULL,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+  `card_id` BIGINT(11) NOT NULL,
+  `user_id` BIGINT(11) NOT NULL,
   `file_name` VARCHAR(255) NOT NULL,
   `file_path` VARCHAR(255) NOT NULL,
-  `file_type` INT(11) NOT NULL,
+  `file_type` BIGINT(11) NOT NULL,
   `archived` TINYINT(1) NOT NULL DEFAULT 0,
   `created_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
@@ -232,10 +232,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `task_agile`.`activity` ;
 
 CREATE TABLE IF NOT EXISTS `task_agile`.`activity` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `user_id` INT(11) NOT NULL,
-  `card_id` INT(11) NULL,
-  `board_id` INT(11) NOT NULL,
+  `id` BIGINT(11) NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT(11) NOT NULL,
+  `card_id` BIGINT(11) NULL,
+  `board_id` BIGINT(11) NOT NULL,
   `type` TINYINT(1) NOT NULL DEFAULT 0,
   `detail` JSON NOT NULL,
   `created_date` DATETIME NOT NULL,
