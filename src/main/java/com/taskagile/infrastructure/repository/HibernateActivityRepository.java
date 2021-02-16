@@ -24,3 +24,7 @@ public class HibernateActivityRepository extends HibernateSupport<Activity> impl
     return query.list();
   }
 }
+
+
+// hello
+

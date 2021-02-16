@@ -47,4 +47,5 @@ public class MeApiController {
     String realTimeToken = tokenManager.jwt(user.getId());
     return MyDataResult.build(user, teams, boards, realTimeServerUrl, realTimeToken);
   }
+  
 }
